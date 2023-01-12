@@ -1,0 +1,4 @@
+2023-01-12 20:23:00.7486 INFO 
+2023-01-12 20:23:00.8311 ERROR myWallet
+2023-01-12 20:23:00.8311 DEBUG Core
+2023-01-12 20:23:00.8581 WARN    at Core.Implementations.TransactionRepo.MakeWithdrawal(TransactionDto withdraw, String walletaddress) in C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Core\Implementations\TransactionRepo.cs:line 153

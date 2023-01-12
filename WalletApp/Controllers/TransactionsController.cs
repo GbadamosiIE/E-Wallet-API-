@@ -62,9 +62,9 @@ namespace WalletApp.Controllers
         [HttpPost("Withdrawal")]
         public async Task<IActionResult> Withdrawal([FromForm] TransactionDto withdraw, string walletaddress)
         {
-            var withdrawal = await _transaction.MakeWithdrawal(withdraw, walletaddress);
-
-            return Ok("Successful");
+            var result = await _transaction.MakeWithdrawal(withdraw, walletaddress);
+            if(!result.Succeeded) return BadRequest(result);
+            return Ok(result);
         }
         /// <summary>
         /// Transfers fund from a wallet to another wallet using wallet addresses
@@ -90,12 +90,10 @@ namespace WalletApp.Controllers
         [HttpGet("Get-All-Transactions-By-WalletAddress")]
         public async Task<IActionResult> GetTransactionsByWalletAddress( [FromQuery]PaginatedParameters parameters,[FromQuery]string walletaddress)
         {
-            var alltransactions = await _transaction.GetAllTransactionByWalletAddress( parameters,walletaddress);
+            var result = await _transaction.GetAllTransactionByWalletAddress( parameters,walletaddress);
 
-            return alltransactions == null ? BadRequest($"No Transactions for this wallet {walletaddress}") : 
-                 Ok(APIListResponseDto.Success(alltransactions, parameters.PageNumber, 
-                alltransactions.MetaData.PageSize, alltransactions.MetaData.TotalPages, alltransactions.MetaData.TotalCount,
-            alltransactions.MetaData.HasPrevious, alltransactions.MetaData.HasNext));
+            return !result.Succeeded ? BadRequest(result) : 
+                 Ok(result);
         }
         /// <summary>
         /// Get the wallet information and Balance in preferred currency

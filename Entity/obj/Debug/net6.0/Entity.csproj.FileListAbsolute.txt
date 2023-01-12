@@ -70,3 +70,15 @@ C:\Users\Decagon\Desktop\ReactNew\Entity\obj\Debug\net6.0\Entity.dll
 C:\Users\Decagon\Desktop\ReactNew\Entity\obj\Debug\net6.0\refint\Entity.dll
 C:\Users\Decagon\Desktop\ReactNew\Entity\obj\Debug\net6.0\Entity.pdb
 C:\Users\Decagon\Desktop\ReactNew\Entity\obj\Debug\net6.0\ref\Entity.dll
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\bin\Debug\net6.0\Entity.deps.json
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\bin\Debug\net6.0\Entity.dll
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\bin\Debug\net6.0\Entity.pdb
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.csproj.AssemblyReference.cache
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.AssemblyInfoInputs.cache
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.AssemblyInfo.cs
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.dll
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\refint\Entity.dll
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\Entity.pdb
+C:\Users\Decagon\Desktop\Git Files\E-Wallet-API-\Entity\obj\Debug\net6.0\ref\Entity.dll

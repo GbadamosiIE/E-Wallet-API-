@@ -1,6 +1,7 @@
 ﻿using Entity.DTOModels;
 using Entity.Helper;
 using Entity.Models;
+using HotelManagement.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace Core.Services
             Task<PageList<TransactionUserViewDto>> GetAllTransactions(PaginatedParameters parameter);
             Task<bool> MakeDeposit(TransactionDto deposit, string walletAddress);
             Task<bool> MakeTransfer(double transferAmount, string description, string senderWalletAdress, string receivingWalletAddress);
-            Task<bool> MakeWithdrawal(TransactionDto withdraw, string walletaddress);
+            Task<Response<bool>> MakeWithdrawal(TransactionDto withdraw, string walletaddress);
 
-            Task<PageList<StatementofTransactionDto>> GetAllTransactionByWalletAddress(PaginatedParameters parameter, string walletaddress);
+            Task<Response<PageList<StatementofTransactionDto>>> GetAllTransactionByWalletAddress(PaginatedParameters parameter, string walletaddress);
             Task<BalanceDto> GetWalletDetails(string Currency, string walletAddress);
             Task<Double> getApi(string currency);
 

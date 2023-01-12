@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jgyilZKbV6xFhDpDpG197dzu8jJVdxtWBWYhPGAC5Vsp9AFcw3TuicXhU9IQ6VDH5TsIvD6VVqk0HTt9v6uUDg==",
+  "dgSpecHash": "j/pwAtSdNdTQFIAnJiprUzMqTWMpmwGQ5abL5R/D1+K1gIKTICh0/URVtTAo2823HCoDUzZ2PozEwNFXFEnPeg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Decagon\\Desktop\\ReactNew\\Entity\\Entity.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Decagon\\Desktop\\Git Files\\E-Wallet-API-\\Entity\\Entity.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Decagon\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

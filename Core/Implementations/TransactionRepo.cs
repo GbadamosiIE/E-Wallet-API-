@@ -3,6 +3,7 @@ using Entity.DTOModels;
 using Entity.Emuns;
 using Entity.Helper;
 using Entity.Models;
+using HotelManagement.Core;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -140,7 +141,7 @@ namespace Core.Implementations
             return false;
         }
 
-        public async Task<bool> MakeWithdrawal(TransactionDto withdraw, string walletaddress)
+        public async Task<Response<bool>> MakeWithdrawal(TransactionDto withdraw, string walletaddress)
         {
             
             try
@@ -153,7 +154,7 @@ namespace Core.Implementations
                 }
                 if (myWallet.WalletBalance < withdraw.TransactionAmount || withdraw.TransactionAmount < 100)
                 {
-                    return false;
+                    return Response<bool>.Fail("Insufficient balance or Can't withdraw less than 100");
                 }
                 myWallet.WalletBalance -= withdraw.TransactionAmount;
                 var transaction = new TransactionModel
@@ -167,7 +168,7 @@ namespace Core.Implementations
                 await _context.AddAsync(transaction);
                 _context.Update(myWallet);
                 _context.SaveChanges();
-                return true;
+                return Response<bool>.Success($" Fund successfully withdraw from {walletaddress}", true);
             }
             catch (Exception ex)
             {
@@ -175,11 +176,11 @@ namespace Core.Implementations
                 _logger.LogError($"{ex.Message}");
                 _logger.LogDebug($"{ex.Source}");
                 _logger.LogWarn($"{ex.StackTrace}");
-
+                return Response<bool>.Fail("Error Occur while Makeing payment");
             }
-            return false;
+           
         }
-        public async Task<PageList<StatementofTransactionDto>> GetAllTransactionByWalletAddress(PaginatedParameters parameter, string walletaddress)
+        public async Task<Response<PageList<StatementofTransactionDto>>> GetAllTransactionByWalletAddress(PaginatedParameters parameter, string walletaddress)
         {
             
             try
@@ -192,8 +193,9 @@ namespace Core.Implementations
                     TransactionType = x.TransactionType,
                     Description = x.Description
                 }).ToListAsync();
-
-                return PageList<StatementofTransactionDto>.ToPagedList(alltransactionswallet,parameter.PageNumber,parameter.PageSize);
+                if (alltransactionswallet.Count == 0) return Response<PageList<StatementofTransactionDto>>.Fail($"No Wallet with {walletaddress} Found");
+                var responsed = PageList<StatementofTransactionDto>.ToPagedList(alltransactionswallet, parameter.PageNumber, parameter.PageSize);
+                return Response<PageList<StatementofTransactionDto>>.Success(walletaddress, responsed);
             }
             catch (Exception ex)
             {
@@ -201,6 +203,7 @@ namespace Core.Implementations
                 _logger.LogError($"{ex.Message}");
                 _logger.LogDebug($"{ex.Source}");
                 _logger.LogWarn($"{ex.StackTrace}");
+                return Response<PageList<StatementofTransactionDto>>.Fail($"Error Occur will Loading Transactions");
 
             }
             return null;
